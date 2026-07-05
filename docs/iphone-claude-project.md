@@ -17,12 +17,18 @@ iPhoneのClaudeプロジェクト → 「分析して」→ mobile.json をfetch
 
 ## 公開されるデータURL
 
-初回セットアップ（`deploy-github-pages.md`）が済むと、以下が公開される。
 `<user>` と `<repo>` は自分のものに置き換える。
 
-- 軽量版（iPhone用・これを使う）: `https://<user>.github.io/<repo>/mobile.json`
-- フルデータ: `https://<user>.github.io/<repo>/latest.json`
-- 人が見るダッシュボード: `https://<user>.github.io/<repo>/`
+**推奨（Pagesビルド不要・すぐ使える）＝ raw配信**
+ワークフローが `gh-pages` ブランチに置くファイルを、GitHubのraw CDNが直接配信する。
+GitHub Pages の初回ビルドが失敗・遅延しても、こちらは即座に動く。
+- 軽量版（iPhone用・これを使う）: `https://raw.githubusercontent.com/<user>/<repo>/gh-pages/mobile.json`
+- フルデータ: `https://raw.githubusercontent.com/<user>/<repo>/gh-pages/latest.json`
+
+**（任意）GitHub Pages が正常に公開できたら、そちらのURLでもよい**
+- `https://<user>.github.io/<repo>/mobile.json` / `.../latest.json` / ダッシュボード `.../`
+
+> 注: raw配信は数分のCDNキャッシュがあるが、日次データなので実用上問題ない。
 
 `mobile.json` の中身（各セクター）:
 `name / short（短期=1日+1週）/ mid（中期=1ヶ月）/ long（長期=3ヶ月）/ overall（総合）/ momentum（勢い）`
@@ -41,7 +47,7 @@ short/mid/long は **強気・やや強気・中立・やや弱気・弱気** �
 あなたは日米株式のセクター強弱レポーターです。
 
 「分析して」「セクター分析」などと言われたら、次のURLの最新JSONを取得して回答してください:
-https://<user>.github.io/<repo>/mobile.json
+https://raw.githubusercontent.com/<user>/<repo>/gh-pages/mobile.json
 
 回答の作り方:
 1. まず generated_at（生成時刻）と、各市場の as_of（データ基準日）を1行で示す。
@@ -55,7 +61,7 @@ https://<user>.github.io/<repo>/mobile.json
 4. 5段階は同一市場内でのセクター相対ランク（五分位）による相対評価であることを一言添える。
 5. 投資勧誘ではなく情報提供である旨を最後に1行入れる。
 
-JSONが取得できない場合は、URLが正しいか・GitHub Pagesが公開済みかを確認するよう促す。
+JSONが取得できない場合は、URLが正しいか（ブランチ名 gh-pages を含むか）を確認するよう促す。
 数値やセクター名を勝手に創作しない。取得したJSONの内容だけで答える。
 ```
 
