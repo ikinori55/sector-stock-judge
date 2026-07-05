@@ -1,0 +1,61 @@
+name: Build sector dashboard
+
+# 手動実行 (Actions画面 or GitHubアプリの "Run workflow") + 平日の定期実行。
+# iPhoneのClaudeは公開された最新JSONを読むだけなので、定期実行で自動更新される。
+# 自動更新を止めたいときは下の schedule をコメントアウトする。
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 7 * * 1-5"   # 平日 07:30 UTC (=日本 16:30) に自動更新
+
+# GitHub Pages への配信に必要な権限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate reports
+        # 日本株は JQUANTS_API_KEY があれば J-Quants(TOPIX-17指数)、無ければ yfinance にフォールバック。
+        env:
+          JQUANTS_API_KEY: ${{ secrets.JQUANTS_API_KEY }}
+        run: |
+          python scripts/sector_data.py --market both
+          python scripts/sector_report.py
+          python scripts/sector_trend.py --market both
+          python scripts/sector_history.py --market both || echo "history skipped"
+          python scripts/sector_history_report.py || echo "history report skipped"
+          python scripts/build_site.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
