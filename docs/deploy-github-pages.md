@@ -31,13 +31,19 @@ git remote add origin https://github.com/<あなた>/<repo>.git
 git push -u origin main
 ```
 
-### 2. GitHub Pages を「GitHub Actions」ソースで有効化
-リポジトリの **Settings → Pages → Build and deployment → Source** を **「GitHub Actions」** に設定する。
-（`/docs` フォルダ方式ではなく Actions デプロイを使うので、生成物をコミットする必要はない）
+### 2. GitHub Pages を「gh-pages ブランチ」ソースで有効化
+リポジトリの **Settings → Pages → Build and deployment → Source** を **「Deploy from a branch」**、
+Branch を **`gh-pages` / `(root)`** に設定する。
+（ワークフローが生成物 `site/` を `gh-pages` ブランチに push し、それをそのまま配信する。
+`.nojekyll` を置くので Jekyll 処理はされず、`mobile.json` などがそのまま公開される。
+※ 以前は「GitHub Actions」ソース＝`actions/deploy-pages` を使っていたが、新規リポジトリでは
+初回デプロイが `Deployment failed, try again later.` で失敗しやすいため、ブランチ方式に変更した。）
 
 ### 3. ワークフローを手動実行
 リポジトリの **Actions → 「Build sector dashboard」→ Run workflow** を押す。
-完了すると、ジョブの `Deploy to GitHub Pages` に公開URL（例 `https://<あなた>.github.io/<repo>/`）が表示される。
+成功すると `gh-pages` ブランチが更新され、数分後に公開URL
+（`https://<あなた>.github.io/<repo>/`）で配信される。
+初回は GitHub 側の Pages 初期化に時間がかかることがある（数分〜最大1時間程度）。
 
 ### 4. iPhoneから閲覧
 - そのURLを **別アカウントの iPhone の Safari** で開く（ブックマーク推奨）。
