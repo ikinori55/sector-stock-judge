@@ -8,11 +8,9 @@ on:
   schedule:
     - cron: "30 7 * * 1-5"   # 平日 07:30 UTC (=日本 16:30) に自動更新
 
-# GitHub Pages への配信に必要な権限
+# gh-pages ブランチへ直接 push して配信する（新規リポジトリでも安定）。
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -21,9 +19,6 @@ concurrency:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,14 +43,19 @@ jobs:
           python scripts/sector_history_report.py || echo "history report skipped"
           python scripts/build_site.py
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
-      - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
+      - name: Publish to gh-pages branch
+        # site/ の中身を gh-pages ブランチにそのまま公開。.nojekyll で Jekyll 処理を無効化。
+        run: |
+          touch site/.nojekyll
+          cd site
+          git init -q
+          git checkout -q -b gh-pages
+          git -c user.name='github-actions[bot]' \
+              -c user.email='github-actions[bot]@users.noreply.github.com' \
+              add -A
+          git -c user.name='github-actions[bot]' \
+              -c user.email='github-actions[bot]@users.noreply.github.com' \
+              commit -q -m "Deploy $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
