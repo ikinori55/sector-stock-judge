@@ -1,0 +1,243 @@
+{
+  "generated_at": "2026-09-11T12:15:57",
+  "markets": {
+    "jp": {
+      "label": "日本株 (TOPIX-17)",
+      "as_of": "2026-09-11",
+      "benchmark": "TOPIX",
+      "sectors": [
+        {
+          "name": "金融（除く銀行）",
+          "short": "強気",
+          "mid": "やや強気",
+          "long": "やや強気",
+          "overall": "強気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "商社・卸売",
+          "short": "強気",
+          "mid": "強気",
+          "long": "やや強気",
+          "overall": "強気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "運輸・物流",
+          "short": "やや強気",
+          "mid": "強気",
+          "long": "やや強気",
+          "overall": "強気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "電力・ガス",
+          "short": "強気",
+          "mid": "強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "弱まっている"
+        },
+        {
+          "name": "エネルギー資源",
+          "short": "強気",
+          "mid": "強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "弱まっている"
+        },
+        {
+          "name": "情報通信・サービス",
+          "short": "中立",
+          "mid": "やや強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "弱まっている"
+        },
+        {
+          "name": "自動車・輸送機",
+          "short": "やや強気",
+          "mid": "中立",
+          "long": "中立",
+          "overall": "強気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "医薬品",
+          "short": "中立",
+          "mid": "中立",
+          "long": "中立",
+          "overall": "強気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "銀行",
+          "short": "やや強気",
+          "mid": "やや強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "食品",
+          "short": "中立",
+          "mid": "中立",
+          "long": "中立",
+          "overall": "中立",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "不動産",
+          "short": "中立",
+          "mid": "中立",
+          "long": "弱気",
+          "overall": "やや弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "鉄鋼・非鉄",
+          "short": "やや弱気",
+          "mid": "弱気",
+          "long": "中立",
+          "overall": "弱気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "建設・資材",
+          "short": "やや弱気",
+          "mid": "やや弱気",
+          "long": "弱気",
+          "overall": "弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "機械",
+          "short": "弱気",
+          "mid": "弱気",
+          "long": "弱気",
+          "overall": "弱気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "素材・化学",
+          "short": "やや弱気",
+          "mid": "やや弱気",
+          "long": "やや弱気",
+          "overall": "弱気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "電機・精密",
+          "short": "弱気",
+          "mid": "弱気",
+          "long": "やや弱気",
+          "overall": "弱気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "小売",
+          "short": "弱気",
+          "mid": "やや弱気",
+          "long": "やや弱気",
+          "overall": "弱気",
+          "momentum": "横ばい"
+        }
+      ]
+    },
+    "us": {
+      "label": "米国株 (S&P500セクター)",
+      "as_of": "2026-09-10",
+      "benchmark": "S&P500",
+      "sectors": [
+        {
+          "name": "エネルギー",
+          "short": "強気",
+          "mid": "強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "弱まっている"
+        },
+        {
+          "name": "情報技術",
+          "short": "やや強気",
+          "mid": "強気",
+          "long": "やや強気",
+          "overall": "強気",
+          "momentum": "弱まっている"
+        },
+        {
+          "name": "金融",
+          "short": "強気",
+          "mid": "やや強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "横ばい"
+        },
+        {
+          "name": "ヘルスケア",
+          "short": "弱気",
+          "mid": "やや強気",
+          "long": "強気",
+          "overall": "強気",
+          "momentum": "弱まっている"
+        },
+        {
+          "name": "コミュニケーション",
+          "short": "強気",
+          "mid": "強気",
+          "long": "中立",
+          "overall": "やや強気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "公益事業",
+          "short": "やや弱気",
+          "mid": "やや弱気",
+          "long": "弱気",
+          "overall": "弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "一般消費財",
+          "short": "中立",
+          "mid": "弱気",
+          "long": "やや弱気",
+          "overall": "弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "生活必需品",
+          "short": "やや強気",
+          "mid": "中立",
+          "long": "やや弱気",
+          "overall": "弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "資本財",
+          "short": "中立",
+          "mid": "弱気",
+          "long": "中立",
+          "overall": "弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "不動産",
+          "short": "やや弱気",
+          "mid": "中立",
+          "long": "弱気",
+          "overall": "弱気",
+          "momentum": "強まっている"
+        },
+        {
+          "name": "素材",
+          "short": "弱気",
+          "mid": "やや弱気",
+          "long": "やや強気",
+          "overall": "弱気",
+          "momentum": "弱まっている"
+        }
+      ]
+    }
+  }
+}
